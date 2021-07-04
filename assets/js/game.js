@@ -5,8 +5,20 @@ var randomNumber = function(min, max) {
     return value;
 }
 
+// function to set name
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+
+    console.log("Your robot's name is " + name);
+    return name;
+};
+
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -175,15 +187,7 @@ var shop = function() {
 
         case "upgrade":
         case "UPGRADE":
-            if (playerInfo.money >= 7) {
-            window.alert("Upgrading player's attack by 6 for 7 dollars");
-
-            // increase attack and decrease money
-            playerInfo.attack = playerInfo.attack + 6;
-            playerInfo.money = playerInfo.money -7;
-            } else {
-            window.alert("You don't have enough money!");
-            }
+            playerInfo.upgradeAttack();
             break;
 
         case "leave":
